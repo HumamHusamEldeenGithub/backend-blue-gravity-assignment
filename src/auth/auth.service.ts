@@ -7,6 +7,7 @@ import {
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { PasswordService } from './password/password.service';
+import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,7 @@ export class AuthService {
     const hashedPassword = await this.passwordService.hashPassword(password);
     const newUser = await this.usersService.create(email, hashedPassword);
 
-    const payload = { sub: newUser.id, email: newUser.email };
+    const payload: Partial<User> = { id: newUser.id, email: newUser.email };
     return {
       accessToken: await this.jwtService.signAsync(payload),
     };
@@ -44,7 +45,7 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
-    const payload = { sub: user.id, email: user.email };
+    const payload: Partial<User> = { id: user.id, email: user.email };
     return {
       accessToken: await this.jwtService.signAsync(payload),
     };
