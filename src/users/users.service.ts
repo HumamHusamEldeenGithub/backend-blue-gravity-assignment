@@ -28,6 +28,10 @@ export class UsersService {
     return this.repo.findOne({ where: { email } });
   }
 
+  findAll() {
+    return this.repo.find();
+  }
+
   async update(id: number, attrs: Partial<User>) {
     if (!id) return null;
 
