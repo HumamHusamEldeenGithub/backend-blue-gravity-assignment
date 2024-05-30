@@ -1,4 +1,5 @@
 import { Expose, Transform } from 'class-transformer';
+import { Rating } from 'src/ratings/rating.entity';
 import { User } from 'src/users/user.entity';
 
 export class ContentDto {
@@ -28,4 +29,14 @@ export class ContentDto {
   })
   @Expose()
   userId: number;
+
+  @Transform(({ obj }) =>
+    obj.ratings?.map((rating: Rating) => ({
+      id: rating.id,
+      userId: rating.user?.id,
+      stars: rating.stars,
+    })),
+  )
+  @Expose()
+  ratings: Rating[];
 }

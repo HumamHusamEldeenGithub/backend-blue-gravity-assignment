@@ -20,7 +20,7 @@ export class ContentsService {
 
     const user = await this.repo.findOne({
       where: { id },
-      relations: ['user'],
+      relations: ['user', 'ratings', 'ratings.user'],
     });
     if (!user) {
       throw new NotFoundException('content not found');
@@ -30,19 +30,22 @@ export class ContentsService {
 
   async findAll() {
     return await this.repo.find({
-      relations: ['user'],
+      relations: ['user', 'ratings', 'ratings.user'],
     });
   }
 
   async findAllByTitle(title: string) {
     return this.repo.find({
       where: { title: Like(`%${title}%`) },
-      relations: ['user'],
+      relations: ['user', 'ratings', 'ratings.user'],
     });
   }
 
   findAllByCategory(category: ContentCategory) {
-    return this.repo.find({ where: { category }, relations: ['user'] });
+    return this.repo.find({
+      where: { category },
+      relations: ['user', 'ratings', 'ratings.user'],
+    });
   }
 
   async update(id: number, attrs: Partial<Content>) {

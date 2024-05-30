@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from './guards/auth.guard';
 import { ContentsModule } from './contents/contents.module';
+import { RatingsModule } from './ratings/ratings.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ContentsModule } from './contents/contents.module';
     UsersModule,
     AuthModule,
     ContentsModule,
+    RatingsModule,
   ],
   controllers: [AppController],
   providers: [

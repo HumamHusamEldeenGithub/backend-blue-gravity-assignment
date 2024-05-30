@@ -1,9 +1,11 @@
+import { Rating } from 'src/ratings/rating.entity';
 import { User } from 'src/users/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -39,4 +41,7 @@ export class Content {
 
   @ManyToOne(() => User, (user) => user.contents)
   user: User;
+
+  @OneToMany(() => Rating, (rating) => rating.content)
+  ratings: Rating[];
 }
