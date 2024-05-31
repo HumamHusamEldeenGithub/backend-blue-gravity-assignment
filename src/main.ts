@@ -22,6 +22,6 @@ async function bootstrap() {
 
   app.use('/', swaggerUi.serve, swaggerUi.setup(document));
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
