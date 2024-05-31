@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
+import { CurrentUser } from 'src/decorators/current-user.decorator';
+import { User } from './user.entity';
 
 @Serialize(UserDto)
 @Controller('users')
@@ -18,8 +27,13 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  @Get('/email/:email')
-  getByEmail(@Param('email') email: string) {
+  @Get('/by-info/email')
+  getByEmail(@Query('email') email: string) {
     return this.usersService.findOneByEmail(email);
+  }
+
+  @Delete()
+  deleteUser(@CurrentUser() currentUser: User) {
+    return this.usersService.delete(currentUser.id);
   }
 }

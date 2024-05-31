@@ -10,9 +10,15 @@ export class Rating {
   @Column()
   stars: number;
 
-  @ManyToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User, (user) => user.id, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user: User;
 
-  @ManyToOne(() => Content, (content) => content.id)
+  @ManyToOne(() => Content, (content) => content.id, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   content: Content;
 }

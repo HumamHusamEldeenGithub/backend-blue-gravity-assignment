@@ -36,10 +36,13 @@ export class Content {
   @Column()
   contentUrl: string;
 
-  @CreateDateColumn({ type: 'datetime' })
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @ManyToOne(() => User, (user) => user.contents)
+  @ManyToOne(() => User, (user) => user.contents, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user: User;
 
   @OneToMany(() => Rating, (rating) => rating.content)

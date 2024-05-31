@@ -7,7 +7,6 @@ import {
   ParseIntPipe,
   Patch,
   Post,
-  Query,
 } from '@nestjs/common';
 import { ContentsService } from './contents.service';
 import { CreateContentDto } from './dtos/create-content.dto';
