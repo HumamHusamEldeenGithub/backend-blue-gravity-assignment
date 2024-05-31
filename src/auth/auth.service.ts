@@ -8,6 +8,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { PasswordService } from './password/password.service';
 import { User } from 'src/users/user.entity';
+import { AuthDto } from './dtos/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -26,9 +27,11 @@ export class AuthService {
     const newUser = await this.usersService.create(email, hashedPassword);
 
     const payload: Partial<User> = { id: newUser.id, email: newUser.email };
-    return {
+    const token: AuthDto = {
       accessToken: await this.jwtService.signAsync(payload),
     };
+
+    return token;
   }
 
   async signin(email: string, password: string) {
@@ -46,8 +49,10 @@ export class AuthService {
     }
 
     const payload: Partial<User> = { id: user.id, email: user.email };
-    return {
+    const token: AuthDto = {
       accessToken: await this.jwtService.signAsync(payload),
     };
+
+    return token;
   }
 }
