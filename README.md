@@ -1,73 +1,116 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Content Sharing Platform API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a backend API for a content-sharing platform that manages user-generated content, including games, videos, artwork, and music.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The project is hosted on [Render](https://render.com): [Content Sharing Platform API](https://backend-blue-gravity-assignment.onrender.com)
 
-## Description
+**Note**: Render free tier will spin down with inactivity, which can delay requests by 50 seconds or more.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Table of Contents
+
+1. [Project Setup](#project-setup)
+2. [API Endpoints](#api-endpoints)
+3. [Database Schema](#database-schema)
+4. [Installation](#installation)
+5. [Running the App](#running-the-app)
+6. [Testing](#testing)
+7. [Usage](#usage)
+
+## Project Setup
+
+This project uses Node.js with the NestJS framework. It includes the necessary dependencies and configurations to manage user-generated content and user authentication.
+
+### Dependencies
+
+- Node.js
+- NestJS
+- TypeORM
+- PostgreSQL
+- JWT for authentication
+
+## API Endpoints
+
+For detailed API information and testing, access the Swagger documentation at: [Swagger Documentation](https://backend-blue-gravity-assignment.onrender.com/api)
+
+## Database Schema
+
+![Database Schema](./public/BlueGravityAssignment_DBDigram.png)
 
 ## Installation
 
+Clone the repository:
+
 ```bash
-$ npm install
+git clone https://github.com/HumamHusamEldeenGithub/backend-blue-gravity-assignment.git
 ```
 
-## Running the app
+Navigate to the project directory:
+
+```bash
+cd backend-blue-gravity-assignment
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Set up environment variables in a `.env` file:
+
+```text
+ENV=DEV
+JWT_SECRET=secret
+
+PG_PORT_DEV=5432
+PG_USERNAME_DEV=yourusername
+PG_PASSWORD_DEV=yourpassword
+PG_DB_DEV=yourdbname
+```
+
+For production environment, set these variables:
+
+```text
+ENV=PROD
+JWT_SECRET=secret
+
+PG_PORT_PROD=db_port
+PG_USERNAME_PROD=your_username
+PG_PASSWORD_PROD=your_password
+PG_DB_PROD=your_db_name
+PG_HOST_PROD=host_url
+PG_CA_PATH_PROD=path_of_certificate
+```
+
+## Running the App
 
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 
-## Test
+## Testing
 
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run test:e2e
 ```
 
-## Support
+## Usage
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- **Running the Server:**
 
-## Stay in touch
+  - The server will run on http://localhost:3000.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- **Accessing API Endpoints:**
+  - Use an API client like Postman or Insomnia to interact with the API.
+  - For protected routes, include the JWT token in the Authorization header as `Bearer <token>`.
