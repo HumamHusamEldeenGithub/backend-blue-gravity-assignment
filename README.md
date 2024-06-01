@@ -2,9 +2,13 @@
 
 This project is a backend API for a content-sharing platform that manages user-generated content, including games, videos, artwork, and music.
 
-The project is hosted on [Render](https://render.com): [Content Sharing Platform API](https://backend-blue-gravity-assignment.onrender.com)
+The project is hosted on [Render](https://render.com): [Content Sharing Platform API](https://backend-blue-gravity-assignment.onrender.com/api)
 
 **Note**: Render free tier will spin down with inactivity, which can delay requests by 50 seconds or more.
+
+Swagger file hosted on [SwaggerHub](https://app.swaggerhub.com/apis/HUMAMHUSAMELDEEN00/blue-gravity_assignment_api/1.0)
+
+[Postman Workspace](https://www.postman.com/dark-meteor-338467/workspace/backend-blue-gravity-assignment)
 
 ## Table of Contents
 
