@@ -1,18 +1,6 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/": {
-      "get": {
-        "operationId": "AppController_getSwaggerJson",
-        "summary": "Get swagger file",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/users": {
       "get": {
         "operationId": "UsersController_getUsers",
@@ -501,7 +489,16 @@
     "contact": {}
   },
   "tags": [],
-  "servers": [],
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development Server"
+    },
+    {
+      "url": "https://backend-blue-gravity-assignment.onrender.com",
+      "description": "Production Server"
+    }
+  ],
   "components": {
     "securitySchemes": {
       "bearer": {

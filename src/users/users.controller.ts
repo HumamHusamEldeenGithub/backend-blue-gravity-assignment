@@ -1,4 +1,11 @@
-import { Controller, Get, Param, Query, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiParam, ApiQuery } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
@@ -18,7 +25,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Get user by ID' })
   @ApiParam({ name: 'id', type: 'number', description: 'User ID' })
   @ApiResponse({ status: 200, description: 'The found record', type: User })
-  getById(@Param('id') id: number) {
+  getById(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
   }
 
@@ -34,7 +41,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user by ID' })
   @ApiParam({ name: 'id', type: 'number', description: 'User ID' })
   @ApiResponse({ status: 200, description: 'Successfully deleted' })
-  deleteUser(@Param('id') id: number) {
+  deleteUser(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.delete(id);
   }
 }

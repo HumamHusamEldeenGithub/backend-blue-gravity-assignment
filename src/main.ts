@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as swaggerUi from 'swagger-ui-express';
 import * as fs from 'fs';
 
 async function bootstrap() {
@@ -12,6 +11,11 @@ async function bootstrap() {
     .setDescription('API description for Blue Gravity Assignment')
     .setVersion('1.0')
     .addBearerAuth()
+    .addServer('http://localhost:3000', 'Development Server')
+    .addServer(
+      'https://backend-blue-gravity-assignment.onrender.com',
+      'Production Server',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
@@ -19,8 +23,6 @@ async function bootstrap() {
   fs.writeFileSync('./swagger.json', JSON.stringify(document, null, 2));
 
   SwaggerModule.setup('api', app, document);
-
-  app.use('/', swaggerUi.serve, swaggerUi.setup(document));
 
   await app.listen(process.env.PORT || 3000);
 }
